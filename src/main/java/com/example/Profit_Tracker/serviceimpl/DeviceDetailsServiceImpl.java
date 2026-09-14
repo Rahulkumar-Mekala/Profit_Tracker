@@ -20,6 +20,14 @@ public class DeviceDetailsServiceImpl implements DeviceDetailsService {
 
     @Override
     public DeviceDetails save(DeviceDetails device) {
+    	
+    	 if (repository.existsBySerialNumber(device.getSerialNumber())) {
+             throw new RuntimeException(
+                     "Serial number already exists: "
+                             + device.getSerialNumber()
+             );
+         }
+
         return repository.save(device);
     }
 
@@ -66,4 +74,6 @@ public class DeviceDetailsServiceImpl implements DeviceDetailsService {
                         new RuntimeException("Device not found with serial number: "
                                 + serialNumber));
     }
+    
+   
 }

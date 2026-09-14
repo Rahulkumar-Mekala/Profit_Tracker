@@ -14,6 +14,6 @@ public interface DeviceDetailsService {
     DeviceDetails getById(UUID id);
     DeviceDetails getBySerialNumber(String serialNumber);
     DeviceDetails update(UUID id, DeviceDetails device);
-
+   
     void delete(UUID id);
 }

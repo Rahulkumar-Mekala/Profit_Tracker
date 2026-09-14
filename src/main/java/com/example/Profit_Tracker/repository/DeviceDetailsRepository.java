@@ -10,4 +10,5 @@ import java.util.UUID;
 
 public interface DeviceDetailsRepository extends JpaRepository<DeviceDetails, UUID> {
 	  Optional<DeviceDetails> findBySerialNumber(String serialNumber);
+	  boolean existsBySerialNumber(String serialNumber);
 }

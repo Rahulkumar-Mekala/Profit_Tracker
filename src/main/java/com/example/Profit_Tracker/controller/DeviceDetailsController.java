@@ -35,6 +35,7 @@ public class DeviceDetailsController {
         return ResponseEntity.ok(service.save(device));
     }
 
+
     @GetMapping
     public ResponseEntity<List<DeviceDetails>> getAll() {
 

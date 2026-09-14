@@ -3,6 +3,7 @@ package com.example.Profit_Tracker.entity;
 import java.time.LocalDate;
 import java.util.UUID;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,7 +25,7 @@ public class DeviceDetails {
     private String brand;
 
     private String model;
-
+    @Column(nullable = false, unique = true)
     private String serialNumber;
 
     private String macAddress;
