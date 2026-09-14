@@ -28,11 +28,35 @@ public class DeviceDetailsController {
 
         this.service = service;
     }
-
     @PostMapping
-    public ResponseEntity<DeviceDetails> save( @RequestBody DeviceDetails device) {
+    public ResponseEntity<?> save(@RequestBody DeviceDetails device) {
 
-        return ResponseEntity.ok(service.save(device));
+        try {
+
+            if (device.getDeviceDate() == null) {
+                return ResponseEntity
+                        .badRequest()
+                        .body("Device date is required");
+            }
+
+            if (device.getSerialNumber() == null ||
+                    device.getSerialNumber().isBlank()) {
+
+                return ResponseEntity
+                        .badRequest()
+                        .body("Serial number is required");
+            }
+
+            return ResponseEntity.ok(service.save(device));
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            return ResponseEntity
+                    .internalServerError()
+                    .body("Failed to save device: " + e.getMessage());
+        }
     }
 
 
