@@ -23,8 +23,8 @@ public class DeviceDetails {
     private LocalDate deviceDate;
 
     private String brand;
-
     private String model;
+    private String productTypes;
     @Column(nullable = false, unique = true)
     private String serialNumber;
 
